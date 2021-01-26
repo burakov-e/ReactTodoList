@@ -1,16 +1,61 @@
 import React from "react";
-import TodoItem from "./components/TodoItem";
-import todosData from "./todosData";
+import Header from "./Header";
+import TodoList from "./TodoList";
 
 
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.color = ['red', 'orange', 'yellow', 'green', 'blue', 'violet'];
         this.state = {
-            todos: todosData
+            currentTask: "",
+            todos: []
         };
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleAdd = this.handleAdd.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({ currentTask: event.target.value });
+    }
+
+    handleAdd(event) {
+        event.preventDefault();
+
+        if (!this.state.currentTask) {
+            alert('Write some task!');
+            return;
+        }
+
+        this.setState(prevState => {
+            let prevID = prevState.todos[0] ? prevState.todos[0].id : 0;
+
+            const newTask = {
+                id: prevID + 1,
+                text: prevState.currentTask,
+                completed: false,
+                color: this.color[(prevID + 1) % this.color.length]
+            };
+            const changedTodos = [newTask, ...prevState.todos];
+
+            return {
+                currentTask: "",
+                todos: changedTodos
+            };
+        });
+    }
+
+    handleDelete(id) {
+        this.setState(prevState => {
+            const changedTodos = prevState.todos.filter(task => task.id !== id);
+
+            return {
+                todos: changedTodos
+            };
+        });
     }
 
     handleClick(id) {
@@ -30,11 +75,12 @@ class App extends React.Component {
 
     render() {
         return (
-            <ul className="todo-list">
-                {
-                    this.state.todos.map(task => <TodoItem onChangeHandle={this.handleClick} key={task.id} task={task}/>)
-                }
-            </ul>
+            <div className="container">
+                <Header changeEvent={this.handleChange} addEvent={this.handleAdd} currentTask={this.state.currentTask}/>
+                <main className="main">
+                    <TodoList todos={[...this.state.todos]} clickEvent={this.handleClick} deleteEvent={this.handleDelete}/>
+                </main>
+            </div>
         );
     }
 }

@@ -1,0 +1,129 @@
+.task {
+    width: 70%;
+    min-height: 50px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 13px;
+    margin-bottom: 15px;
+    list-style-type: none;
+}
+.task .task-title {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+.task .btn-delete {
+    background: transparent;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+.task .btn-delete .icon {
+    width: 20px;
+    height: 20px;
+}
+
+button:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.done {
+    left: 40px;
+    background-color: rgba(67, 67, 67, 0.4);
+    border: 1.5px solid #434343;
+    border-radius: 5px;
+    text-decoration: line-through;
+}
+.done .task-title {
+    color: #1a1a1a;
+}
+.done .icon {
+    fill: #1a1a1a;
+}
+.done::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 15px;
+    border-left: 5px solid #40f600;
+    border-bottom: 5px solid #40f600;
+    transform: rotate(-45deg);
+    position: absolute;
+    left: -40px;
+}
+
+.red {
+    background-color: rgba(255, 109, 109, 0.4);
+    border: 1.5px solid #ff6d6d;
+    border-radius: 5px;
+}
+.red .task-title {
+    color: #510000;
+}
+.red .icon {
+    fill: #510000;
+}
+
+.orange {
+    background-color: rgba(255, 184, 109, 0.4);
+    border: 1.5px solid #ffb86d;
+    border-radius: 5px;
+}
+.orange .task-title {
+    color: #4f2200;
+}
+.orange .icon {
+    fill: #4f2200;
+}
+
+.yellow {
+    background-color: rgba(255, 248, 109, 0.4);
+    border: 1.5px solid #fff86d;
+    border-radius: 5px;
+}
+.yellow .task-title {
+    color: #484800;
+}
+.yellow .icon {
+    fill: #484800;
+}
+
+.green {
+    background-color: rgba(144, 253, 104, 0.4);
+    border: 1.5px solid #90fd68;
+    border-radius: 5px;
+}
+.green .task-title {
+    color: #004500;
+}
+.green .icon {
+    fill: #004500;
+}
+
+.blue {
+    background-color: rgba(109, 158, 255, 0.4);
+    border: 1.5px solid #6d9eff;
+    border-radius: 5px;
+}
+.blue .task-title {
+    color: #00003c;
+}
+.blue .icon {
+    fill: #00003c;
+}
+
+.violet {
+    background-color: rgba(170, 109, 255, 0.4);
+    border: 1.5px solid #aa6dff;
+    border-radius: 5px;
+}
+.violet .task-title {
+    color: #400040;
+}
+.violet .icon {
+    fill: #400040;
+}
