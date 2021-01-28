@@ -3,7 +3,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import './index.css';
 
 function TodoItem(props) {
-    const task = props.task;
+    const { task } = props;
     return (
         <li className={task.completed ? "task done" : `task ${task.color}`} onClick={() => props.onChangeHandle(task.id)}>
             <p className="task-title">{task.text}</p>

@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./Header";
 import TodoList from "./TodoList";
 
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -78,7 +77,10 @@ class App extends React.Component {
             <div className="container">
                 <Header changeEvent={this.handleChange} addEvent={this.handleAdd} currentTask={this.state.currentTask}/>
                 <main className="main">
-                    <TodoList todos={[...this.state.todos]} clickEvent={this.handleClick} deleteEvent={this.handleDelete}/>
+                    <TodoList todos={[...this.state.todos]}
+                              onChangeHandle={this.handleClick}
+                              onDeleteTask={this.handleDelete}
+                    />
                 </main>
             </div>
         );

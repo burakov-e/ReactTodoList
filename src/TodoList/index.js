@@ -3,11 +3,12 @@ import TodoItem from "../TodoItem";
 import './index.css';
 
 function TodoList(props) {
+    console.log(props.children);
     return (
         <ul className="todo-list">
             {
                 props.todos.map(task =>
-                    <TodoItem onChangeHandle={props.clickEvent} onDeleteTask={props.deleteEvent} key={task.id} task={task}/>
+                    <TodoItem onChangeHandle={props.onChangeHandle} onDeleteTask={props.onDeleteTask} key={task.id} task={task}/>
                 )
             }
         </ul>
