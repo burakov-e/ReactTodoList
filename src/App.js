@@ -24,7 +24,7 @@ class App extends React.Component {
     handleAdd(event) {
         event.preventDefault();
 
-        if (!this.state.currentTask) {
+        if (!this.state.currentTask.trim()) {
             alert('Write some task!');
             return;
         }
@@ -77,10 +77,15 @@ class App extends React.Component {
             <div className="container">
                 <Header changeEvent={this.handleChange} addEvent={this.handleAdd} currentTask={this.state.currentTask}/>
                 <main className="main">
-                    <TodoList todos={[...this.state.todos]}
-                              onChangeHandle={this.handleClick}
-                              onDeleteTask={this.handleDelete}
-                    />
+                    {
+                        this.state.todos.length ? <TodoList todos={[...this.state.todos]}
+                                                            onChangeHandle={this.handleClick}
+                                                            onDeleteTask={this.handleDelete}
+                                                  /> :
+                                                  <div className="nothing">
+                                                      You don't have any tasks
+                                                  </div>
+                    }
                 </main>
             </div>
         );
